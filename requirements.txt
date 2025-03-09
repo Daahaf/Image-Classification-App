@@ -5,4 +5,9 @@ scikit-learn
 matplotlib
 seaborn
 deepface
+tensorflow
 tf-keras
+pillow
+opencv-python
+opencv-python-headless
+
