@@ -1,130 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[5]:
 
 
-
-
-# In[7]:
-
-
-import numpy as np
-import pandas as pd
 from deepface import DeepFace
 import matplotlib.pyplot as plt
-
-# Load an image and analyze it
-image_path = r"C:\Users\fahaa\Downloads\Ryan Gosling.jpg"
-result = DeepFace.analyze(img_path=image_path, actions=['age', 'gender', 'emotion'], enforce_detection=False)
-
-print(result)
-
-
-# In[18]:
-
-
-import numpy as np
-import pandas as pd
-from deepface import DeepFace
-import matplotlib.pyplot as plt
-
-# Load an image and analyze it
-image_path = r"C:\Users\fahaa\Downloads\Ryan Gosling.jpg"
-result = DeepFace.analyze(img_path=image_path, actions=['age', 'gender', 'emotion'])
-
-print(result)
-
-
-# In[12]:
-
-
-import cv2
-
-
-# In[14]:
-
-
-# Load the image using OpenCV
-# Load the image using OpenCV
-image_path = r"C:\Users\fahaa\Downloads\Ryan Gosling.jpg"
-image = cv2.imread(image_path)
-
-image = cv2.resize(image, (200, 200))
-
-# Convert the image from BGR to RGB format
-image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-
-
-# Display the image using matplotlib
-plt.imshow(image_rgb)
-plt.axis('off')  # Hide axes for better display
-plt.show()
-
-# Analyze the image with DeepFace
-result = DeepFace.analyze(img_path=image_path, actions=['age', 'gender', 'emotion'], enforce_detection=False)
-
-print(result)
-
-
-
-
-
-# In[20]:
-
-
-import numpy as np
-import pandas as pd
-from deepface import DeepFace
-import matplotlib.pyplot as plt
-import cv2
-import os
-
-# Directory containing images
-image_dir = r"C:\Users\fahaa\Downloads\models"
-
-# List to hold results
-results = []
-
-# Loop through each image in the directory
-for image_name in os.listdir(image_dir):
-    image_path = os.path.join(image_dir, image_name)
-
-    # Load the image using OpenCV
-    image = cv2.imread(image_path)
-    
-    # Check if the image is loaded correctly
-    if image is None:
-        print(f"Error: Image {image_name} not loaded correctly.")
-        continue
-
-    image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-
-    # Display the image using matplotlib
-    plt.imshow(image_rgb)
-    plt.axis('off')
-    plt.show()
-
-   # Analyze the image with DeepFace using the default model
-try:
-    result = DeepFace.analyze(img_path=image_path, actions=['age', 'gender', 'emotion'])
-    
-    if isinstance(result, list) and len(result) > 0:  # Ensure the result is valid
-        results.append(result[0])  # Append the first result dictionary
-        print(f"Results for {image_name}: {result[0]}")
-    else:
-        print(f"Warning: No valid face detected in {image_name}")
-
-except Exception as e:
-    print(f"Error analyzing {image_name}: {e}")
-
-# Convert results to a DataFrame for better visualization
-results_df = pd.DataFrame(results)
-print(results_df)
-
-
-# In[ ]:
 
 import os
 import cv2
@@ -196,7 +76,7 @@ if mode == "Upload Single Image":
 
 # If user wants to process an entire directory
 elif mode == "Process Images from Directory":
-    image_dir = st.text_input("Enter full directory path (e.g., C:\\Users\\fahaa\\Downloads\\models)")
+    image_dir = st.text_input("Enter full directory path (e.g., C:\\Users\\Username\\Downloads\\models)")
 
     if st.button("Analyze Images"):
         if os.path.isdir(image_dir):
