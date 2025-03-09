@@ -8,6 +8,5 @@ deepface
 tensorflow
 tf-keras
 pillow
-opencv-python
 opencv-python-headless
 
