@@ -112,4 +112,3 @@ elif mode == "Process Images from Directory":
 
 
 
-
